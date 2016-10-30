@@ -7,7 +7,7 @@ http://kig.re/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx
 Zur Tonerzeugung wird die NewTone()-Library verwendet.
 https://forum.arduino.cc/index.php?topic=143940.0
 
-Im Ordner /gdaybtn liegt das Beispiel-Programm gdaybtn.ino
+Im Ordner /gdaybtn liegt das Beispiel-Programm <br> gdaybtn.ino, pitches.h und sfx.h
 
   Funktionen:
   - Status eines Buttons auslesen
