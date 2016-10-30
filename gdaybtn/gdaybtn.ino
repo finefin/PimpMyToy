@@ -38,6 +38,16 @@
   Button 1 spielt Sound auf Lautsprecher 1, Button 2 spielt Sound auf Lautsprecher 2 usw.
   Die LEDs blinken immer alle (aber unterschiedlich schnell) mit jedem Sound.
 
+  Buttons anschließen:
+  Verbinde einen Kontakt mit GND und den anderen mit einem der Button-Pins (D2-D6).
+
+  Lautsprecher anschließen:
+  Verbinde einen Kontakt mit GND und den anderen mit einem der Sound-Pins (D8-D12).
+
+  LED anschließen:
+  Verbinde das lange Bein (Anode) mit einem Widerstand (ca. 300 Ohm) und den Widerstand mit einem 
+  LED-Pin (A1-A4). Das kurze Bein (Kathode) wird mit GND verbunden.
+
   Wenn die Schaltung steht, kann auch der Code angepasst werden.
   Für die Soundeffekte, schaue dir die Datei sfx.h an, hier werden auch die LEDs angesteuert.
 
@@ -124,7 +134,6 @@ void setup() {
 
   // Wie oben beschrieben, müssen nicht an alle Pins auch tatsächlich Komponenten angeschlossen werden.
   // Wir entscheiden, welche Ein- und Ausgänge wir nutzen wollen und lassen die anderen einfach offen.
-  // Damit der Code funktioniert, muss aber darauf geachtet werden, dass
 
 }
 
