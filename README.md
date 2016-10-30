@@ -14,8 +14,10 @@ Dies ist das Standard-Programm für unsere Arduinos.
   So können wir das Spielzeug erstmal "programmieren", ohne uns um den Code kümmern zu müssen.
   Standard-Pin-Belegung:
   
+  
   PIN Dn      Funktion
   D2            Button 1
+  
   D3            Button 2
   D4            Button 3
   D5            Button 4
