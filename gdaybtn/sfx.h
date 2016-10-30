@@ -13,10 +13,10 @@
     sfxRandomSine(pin)
             Spielt einen zufälligen Zwitscher-Sound
 
-    sndfxUP(pin)
+    sndfxUP(pin,  startFrequenz,  endFrequenz,  geschwindigkeit)
             Spielt einen konstant ansteigenden Ton
 
-    sndfxDWN(pin)
+    sndfxDWN(pin,  startFrequenz,  endFrequenz,  geschwindigkeit) 
             Spielt einen konstant abfallenden Ton
 
     playMOLL(pin, anzahlNoten, tempo)
@@ -28,13 +28,16 @@
     playRandomSound (pin)
             Spielt zufällig einen der gelisteten Sounds
 
+    animalSound (pin, "vogel")
+            Spielt "vogel" und "kuh"
+
 
 */
 
-#include <Arduino.h> // ohne das hier funktioniert nichts
+#include <Arduino.h> // ohne das funktioniert hier nichts
 #include "pitches.h" // hier sind die Frequenzen für die Klaviernoten gespeichert
 
-// mit der Frequenzen-Sammlung in der pitches.h können wir Melodien aufschreiben und abspielen lassen
+// mit der "Frequenzen-Sammlung" in der Datei pitches.h können wir Melodien aufschreiben und abspielen lassen
 // in dieser Liste hier habe ich mal ein paar Akkorde
 int chords[4][6] = {
   { NOTE_C2, NOTE_DS3, NOTE_F4, NOTE_GS3, NOTE_B3, 0 }, // C-Moll
@@ -51,30 +54,15 @@ void sndfxSine(int derPin, float zwitscherFaktor, int amplitude, int basisHoehe,
   // Hier tut ein for-Loop seine Arbeit.:
   // Er wiederholt den Code so lange, wie "i" kleiner als "dauer" ist
   for (unsigned long i = 0; i <= dauer; i += 1) {
+
     // In ix wird der Wert für die neue Frequenz gespeichert, die gepielt werden soll
     int ix = int( sin(i * zwitscherFaktor) * amplitude ) + basisHoehe * 1.1;
-
-    // Hier werden die LEDs entsprechend der Sounds an und ausgeschaltet
-    // Wenn ix eine gerade Zahl ist, werden LED_PINs 1 und 3 angeschaltet, die anderen ausgeschaltet.
-    // Ist ix ungerade, werden LED_PINs 1 und 3 ausgeschaltet, die anderen angeschaltet.
-    if (ix % 2 > 0) {
-      digitalWrite (LED_PIN1, HIGH);
-      digitalWrite (LED_PIN2, LOW);
-      digitalWrite (LED_PIN3, HIGH);
-      digitalWrite (LED_PIN4, LOW);
-    } else {
-      digitalWrite (LED_PIN1, LOW);
-      digitalWrite (LED_PIN2, HIGH);
-      digitalWrite (LED_PIN3, LOW);
-      digitalWrite (LED_PIN4, HIGH);
-    }
-
-    // NewTone hier spielt den neuen Ton ab
-    NewTone(derPin, ix + potiRead);
-    // es wird sehr kurz gewartet (2 Millisekunden)
-    delay(2);
+    blinkModulo (ix); // die LEDs blinken lassen
+   
+    NewTone(derPin, ix + potiRead); // NewTone hier spielt den neuen Ton ab 
+    delay(2); // dann wird sehr kurz gewartet (2 Millisekunden) 
   }
-  // und am Ende wird der Ton gestoppt
+  // und am Ende wird der Ton noch gestoppt, sonst spielt er endlos weiter
   noNewTone(derPin);
 }
 
@@ -92,11 +80,7 @@ void sfxRandomSine (int derPin) {
 void sndfxUP(int derPin, int startFrequenz, int endFrequenz, int geschwindigkeit) {
   for (unsigned long freq = startFrequenz; freq <= endFrequenz; freq += geschwindigkeit) {
     NewTone(derPin, freq + potiRead);
-    if (freq % 2 > 0) {
-      digitalWrite (LED_PIN1, HIGH);
-    } else {
-      digitalWrite (LED_PIN1, LOW);
-    }
+    blinkModulo (freq); // die LEDs blinken lassen
     delay(1);
   }
   noNewTone(derPin);
@@ -106,11 +90,7 @@ void sndfxUP(int derPin, int startFrequenz, int endFrequenz, int geschwindigkeit
 void sndfxDWN(int derPin, int startFrequenz, int endFrequenz, int geschwindigkeit)  {
   for (unsigned long freq = startFrequenz; freq > endFrequenz; freq -= geschwindigkeit) {
     NewTone(derPin, freq + potiRead);
-    if (freq % 5 > 0) {
-      digitalWrite (LED_PIN1, HIGH);
-    } else {
-      digitalWrite (LED_PIN1, LOW);
-    }
+    blinkModulo (freq); // die LEDs blinken lassen
     delay(1);
   }
   noNewTone(derPin);
@@ -124,6 +104,7 @@ void playMOLL(int derPin, int anzahlNoten, int tempo) {
     int zufallsNote = random (0, 5);
     int zufallsPause = random (0, tempo * 0.25);
     int dieNote = chords [0] [zufallsNote];
+    blinkModulo (steps); // die LEDs blinken lassen
     NewTone(derPin, dieNote + potiRead);
     delay(tDelay);
     noNewTone(derPin);
@@ -139,6 +120,7 @@ void playDUR(int derPin, int anzahlNoten, int tempo) {
     int zufallsNote = random (0, 5);
     int zufallsPause = random (0, tempo * 0.25);
     int dieNote = chords [1] [zufallsNote];
+    blinkModulo (steps); // die LEDs blinken lassen
     NewTone(derPin, dieNote + potiRead);
     delay(tDelay);
     noNewTone(derPin);
@@ -146,7 +128,7 @@ void playDUR(int derPin, int anzahlNoten, int tempo) {
   }
 }
 
-
+// aus unterschiedlichen Sound-Elementen werden Tier-Sounds erstellt
 void animalSound (int derPin, String theAnimal) {
 
   if (theAnimal == "vogel") {
@@ -163,8 +145,7 @@ void animalSound (int derPin, String theAnimal) {
       sndfxSine(derPin, 0.01, 50, 200, 300);
       sndfxDWN(derPin, 200, 10,  1);
   }
-
-
+  
 }
 
 // Würfelt einmal rndSnd und spielt dann einen zufälligen Sound ab

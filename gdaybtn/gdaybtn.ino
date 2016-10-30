@@ -49,10 +49,10 @@
 // So müssen wir das Programm nicht nochmal anpassen.
 
 // Button Pins
-#define BTN_PIN1 5
+#define BTN_PIN1 2
 #define BTN_PIN2 3
 #define BTN_PIN3 4
-#define BTN_PIN4 2
+#define BTN_PIN4 5
 #define BTN_PIN5 6
 
 // Speaker Pins
@@ -75,7 +75,9 @@
 
 int potiRead = 0;    // Wir können einen Potenziometer (Drehknopf) auslesen und den Wert in potiRead speichern
 
-#include "sfx.h" // Die Soundeffekte können in der sfx.h angepasst werden
+#include "leds.h"   // Die Lichteffekte können in der leds.h angepasst werden
+#include "sfx.h"    // Die Soundeffekte können in der sfx.h angepasst werden
+
 
 void setup() {
   // setup wird EINMAL ausgeführt, wenn der Arduino startet!
@@ -144,17 +146,16 @@ void loop() {
   if (button1 == LOW) {
     // button1 wird gedrückt
 
-
     animalSound (SPK_PIN1, "kuh");
 
-    // sfxRandomSine(SPK_PIN1);                      // eine zufällig oszillierende "Sinus-Tonfolge"
+    // sfxRandomSine(SPK_PIN1);                    // eine zufällig oszillierende "Sinus-Tonfolge"
     // playMOLL(SPK_PIN1, random (4, 16), 950);    // Zufällige Melodie in C-Moll
     // playDUR(SPK_PIN1, random (4, 16), 950);     // Zufällige Melodie in C-Dur
     // sndfxSine(SPK_PIN1, 0.1, 1000, 50);         // Vogel
     // sndfxSine(SPK_PIN1, 0.01, 1000, 500, 550);  // Crazy Sirene
     // sndfxSine(SPK_PIN1, 0.1, 100, 100);         // Motor springt nicht an
-    // sndfxUP(SPK_PIN1, 100, 1000, 10);                 // ein schnell ansteigender Ton
-    // sndfxDWN(SPK_PIN1,1000, 100, 1);                 // ein langsam fallender Ton
+    // sndfxUP(SPK_PIN1, 100, 1000, 10);           // ein schnell ansteigender Ton
+    // sndfxDWN(SPK_PIN1,1000, 100, 1);            // ein langsam fallender Ton
     // playRandomSound(SPK_PIN1);                  // ein zufälliger Sound
 
   }
@@ -171,7 +172,7 @@ void loop() {
 
   if (button4 == LOW) {
     // button4 wird gedrückt
-    playRandomSound(SPK_PIN4); // ein zufälliger Sound wird abgespielt
+     animalSound (SPK_PIN1, "vogel");
   }
 
   if (button5 == LOW) {
