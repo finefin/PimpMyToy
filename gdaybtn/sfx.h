@@ -57,6 +57,7 @@ void sndfxSine(int derPin, float zwitscherFaktor, int amplitude, int basisHoehe,
 
     // In ix wird der Wert für die neue Frequenz gespeichert, die gepielt werden soll
     int ix = int( sin(i * zwitscherFaktor) * amplitude ) + basisHoehe * 1.1;
+    
     blinkModulo (ix); // die LEDs blinken lassen
    
     NewTone(derPin, ix + potiRead); // NewTone hier spielt den neuen Ton ab 

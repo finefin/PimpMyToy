@@ -98,12 +98,14 @@ void setup() {
   Serial.begin(9600);
 
 
-  // Jetzt werden die Buttons eingerichtet.
+  // Jetzt werden die Buttons eingerichtet, 
+  // indem wir jeweils den pin-Modus auf EINGABE setzen
   pinMode(BTN_PIN1, INPUT);
   pinMode(BTN_PIN2, INPUT);
   pinMode(BTN_PIN3, INPUT);
   pinMode(BTN_PIN4, INPUT);
   pinMode(BTN_PIN5, INPUT);
+  
   // Da wir möglichst wenige Kabel benutzen wollen,
   // aktivieren wir nun die internen Pullup-Widerstände des Arduinos.
   // Das bewirkt, dass wir den Stromkreis "umdrehen"
@@ -123,13 +125,13 @@ void setup() {
   pinMode(SPK_PIN4, OUTPUT);
   pinMode(SPK_PIN5, OUTPUT);
 
-  // ... und dies sind die Pins für unsere LEDs
+  // ... und dies sind die Output-Pins für unsere LEDs
   pinMode(LED_PIN1, OUTPUT);
   pinMode(LED_PIN2, OUTPUT);
   pinMode(LED_PIN3, OUTPUT);
   pinMode(LED_PIN4, OUTPUT);
 
-  // ... und für den Fall, dass ein Potenziometer angeschlossen werden soll...
+  // ... und für den Fall, dass ein Potenziometer angeschlossen werden soll,
   // pinMode(POT_PIN1, INPUT);
 
   // Wie oben beschrieben, müssen nicht an alle Pins auch tatsächlich Komponenten angeschlossen werden.
@@ -137,11 +139,12 @@ void setup() {
 
 }
 
-// In der Funktion loop() spielt sich das eigentliche Programm ab.
+// Die loop()-Funktion wird direkt nach setup() gestartet und läuft dann so lange
+// wie der Arduino mit Strom versorgt wird.
 // Alles, was zwischen void loop() {   und   } steht, wird so schnell
 // wiederholt, wie der Arduino kann bzw. wie es unser Programm zulässt.
-void loop() {
 
+void loop() {
   // mit jeder Wiederholung lesen wir den Status der Buttons aus
   int button1 = digitalRead (BTN_PIN1);
   int button2 = digitalRead (BTN_PIN2);
@@ -192,7 +195,7 @@ void loop() {
   // Wenn KEIN Button mehr gedrückt wird, sollen alle LEDs aus gehen
   // hierfür benutzen wir das "logische UND" (&&)
   // das bewirkt, dass der Code in den geschweiften Klammern nur dann ausgeführt wird,
-  // wenn alle Bedingungen zutreffen, hier: alle Buttons auf HIGH stehen
+  // wenn alle fünf Bedingungen zutreffen, also alle Buttons auf HIGH stehen
   if (button1 == HIGH && button2 == HIGH && button3 == HIGH && button4 == HIGH && button5 == HIGH) {
     // mit "digitalWrite" können wir einen Pin ein- und ausschalten,
     // indem wir ihn auf HIGH oder LOW setzen. Hier machen wir alle LEDs aus:
@@ -203,8 +206,9 @@ void loop() {
   }
 
   // Wenn wir einen Potentiometer-Drehknopf einbauen,
-  // können wir mit analogRead dessen Wert auslesen und in potiRead speichern
-  // potiRead = analogRead (A1) * 2;
+  // können wir mit analogRead dessen Wert auslesen und in potiRead speichern.
+  // Entferne hier den //-Kommentar, wenn du einen Poti benutzt:
+  // potiRead = analogRead (A1) * 4;
 
 } // hier endet die loop()-Funktion und der Arduino fängt wieder oben an
 
