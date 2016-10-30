@@ -1,9 +1,13 @@
 # PimpMyToy
-Arduino-Sketch für den Girl's Day Workshop
-
 Girl's Day - Toy Hacking Workshop!
 
-Dies ist das Standard-Programm für unsere Arduinos.
+Es werden Arduino Nano (Klone) mit CH340-Chipsatz verwendet. 
+http://kig.re/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx-yosemite.html
+
+Zur Tonerzeugung wird die NewTone()-Library verwendet.
+https://forum.arduino.cc/index.php?topic=143940.0
+
+Im Ordner /gdaybtn liegt das Beispiel-Programm gdaybtn.ino
 
   Funktionen:
   - Status eines Buttons auslesen
