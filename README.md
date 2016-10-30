@@ -16,35 +16,36 @@ Dies ist das Standard-Programm für unsere Arduinos.
   
   
   PIN / Funktion
-  D2            Button 1
   
-  D3            Button 2
+  D2 / Button 1
   
-  D4            Button 3
+  D3 / Button 2
   
-  D5            Button 4
+  D4 / Button 3
   
-  D6            Button 5
+  D5 / Button 4
   
-  D8            Sound 1
+  D6 / Button 5
   
-  D9            Sound 2
+  D8 / Sound 1
   
-  D10           Sound 3
+  D9 / Sound 2
   
-  D11           Sound 4
+  D10 / Sound 3
   
-  D12           Sound 5
+  D11 / Sound 4
   
-  A1            LED 1
+  D12 / Sound 5
   
-  A2            LED 2
+  A1 / LED 1
   
-  A3            LED 3
+  A2 / LED 2
   
-  A4            LED 4
+  A3 / LED 3
   
-  (A5            Potentiometer)
+  A4 / LED 4
+  
+  (A5 / Potentiometer)
   
   Button 1 spielt Sound auf Lautsprecher 1, Button 2 spielt Sound auf Lautsprecher 2 usw.
   Die LEDs blinken immer alle (aber unterschiedlich schnell) mit jedem Sound.
