@@ -15,25 +15,39 @@ Dies ist das Standard-Programm für unsere Arduinos.
   Standard-Pin-Belegung:
   
   
-  PIN Dn      Funktion
+  PIN / Funktion
   D2            Button 1
   
   D3            Button 2
+  
   D4            Button 3
+  
   D5            Button 4
+  
   D6            Button 5
+  
   D8            Sound 1
+  
   D9            Sound 2
+  
   D10           Sound 3
+  
   D11           Sound 4
+  
   D12           Sound 5
+  
   A1            LED 1
+  
   A2            LED 2
+  
   A3            LED 3
+  
   A4            LED 4
-  A5            Potentiometer
+  
+  (A5            Potentiometer)
   
   Button 1 spielt Sound auf Lautsprecher 1, Button 2 spielt Sound auf Lautsprecher 2 usw.
   Die LEDs blinken immer alle (aber unterschiedlich schnell) mit jedem Sound.
+  
   Wenn die Schaltung steht, kann auch der Code angepasst werden.
   Für die Soundeffekte, schaue dir die Datei sfx.h an, hier werden auch die LEDs angesteuert.
