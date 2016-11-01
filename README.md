@@ -1,6 +1,9 @@
 # PimpMyToy
 Girl's Day - Toy Hacking Workshop!
 
+TODO:  Arduino IDE Link
+CH340 für Linux
+
 Es werden Arduino Nano (Klone) mit CH340-Chipsatz verwendet. 
 http://kig.re/2014/12/31/how-to-use-arduino-nano-mini-pro-with-CH340G-on-mac-osx-yosemite.html
 
