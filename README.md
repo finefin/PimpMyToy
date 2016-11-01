@@ -15,7 +15,7 @@ https://www.arduino.cc/en/Guide/Libraries
 
 Im Ordner /gdaybtn liegt das Beispiel-Programm gdaybtn.ino, das mit der Arduino-Software geöffnet werden kann
 
-pitches.h, leds.h und sfx.h
+pitches.h, leds.h und sfx.h beinhalten Programmteile für Sounds und LEDs
 
   Funktionen:
   - Status eines Buttons auslesen
