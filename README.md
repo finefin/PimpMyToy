@@ -13,8 +13,9 @@ https://forum.arduino.cc/index.php?topic=143940.0
 Wie man eine Bibliothek hinzufügt, kann man hier lesen
 https://www.arduino.cc/en/Guide/Libraries
 
-Im Ordner /gdaybtn liegt das Beispiel-Programm <br> 
-gdaybtn.ino, pitches.h, leds.h und sfx.h
+Im Ordner /gdaybtn liegt das Beispiel-Programm gdaybtn.ino, das mit der Arduino-Software geöffnet werden kann
+
+pitches.h, leds.h und sfx.h
 
   Funktionen:
   - Status eines Buttons auslesen
