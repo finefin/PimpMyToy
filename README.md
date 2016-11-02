@@ -1,5 +1,5 @@
 # PimpMyToy
-Girl's Day - Toy Hacking Workshop!
+Girl's Day - Toy Hacking Workshop im Game Science Center Berlin!
 
 Um einen Arduino mit einem Programm ("Sketch") zu bespielen, muss zunächst die Arduino-Software installiert werden.
 https://www.arduino.cc/en/Main/Software
